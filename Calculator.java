@@ -62,12 +62,12 @@ public class Calculator {
 				sc.next();
 			}
 			
-			if(op == '+' || op == '-' || op == '*' || op == '/') {
-				
-				return op;
-			}
-			else {
-				System.out.println("Kein g�ltiger mathematischer Operator!");
+			switch(op) {
+				case '+': return op;
+				case '-': return op;
+				case '*': return op;
+				case '/': return op;
+				default: System.out.println("Kein gültiger mathematischer Operator!");
 			}
 		}
 		return ' ';
@@ -75,28 +75,11 @@ public class Calculator {
 	
 	private static double rechne(double num1, double num2, char op) {
 		
-		if(op == '+') {
-			
-			return num1 + num2;
-		}
-		else if(op == '-') {
-			
-			return num1 - num2;
-		}
-		else if(op == '*') {
-			
-			return num1 * num2;
-		}
-		else {
-			
-			if(num2 != 0) {
-				
-				return num1 / num2;
-			}
-			else {
-				
-				throw new IllegalArgumentException("Error: Kann nicht durch 0 teilen");
-			}
+		switch(op) {
+			case '+': return num1+num2;
+			case '-': return num1-num2;
+			case '*': return num1*num2;
+			case '/': num2 != 0 ? return num1/num2 : throw new IllegalArgumentException("Error: Kann nicht durch 0 teilen");
 		}
 	}
 
