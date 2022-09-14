@@ -11,8 +11,9 @@ public class Calculator {
 		double num2;
 		char op;
 		double sum;
+		boolean run;
 		
-		while(true) {
+		while(run) {
 			
 			num1 = inputNumber(sc, "Zahl 1: ");
 			op = inputOp(sc, "Operator: ");
@@ -23,7 +24,8 @@ public class Calculator {
 				System.out.println("Ergebnis: " + sum);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
-			}			
+			}
+			run = repeat(sc);
 		}
 	}
 	
@@ -31,7 +33,7 @@ public class Calculator {
 		
 		boolean exit = false;
 		
-		while(exit == false) {
+		while(!exit) {
 			
 			System.out.print(msg);
 			try {				
@@ -50,7 +52,7 @@ public class Calculator {
 		boolean exit = false;
 		char op = ' ';
 		
-		while(exit == false) {
+		while(!exit) {
 			
 			System.out.print(msg);
 			try {
@@ -65,7 +67,7 @@ public class Calculator {
 				return op;
 			}
 			else {
-				System.out.println("Kein gültiger mathematischer Operator!");
+				System.out.println("Kein gï¿½ltiger mathematischer Operator!");
 			}
 		}
 		return ' ';
@@ -95,6 +97,21 @@ public class Calculator {
 				
 				throw new IllegalArgumentException("Error: Kann nicht durch 0 teilen");
 			}
+		}
+	}
+
+	private static boolean repeat(Scanner sc) {
+
+		System.out.print("MÃ¶chten Sie eine weitere Berechnung eingeben? (j/n) ");
+		char input = sc.next().charAt(0).toLowerCase();
+
+		if(input == 'j') {
+
+			return true;
+		}
+		else {
+
+			return false;
 		}
 	}
 }
